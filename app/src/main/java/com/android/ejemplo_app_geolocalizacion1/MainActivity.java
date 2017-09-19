@@ -27,7 +27,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout l;
-    Button b;
+    Button b,b2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         l = (LinearLayout) findViewById(R.id.miLayout);
         b = (Button) findViewById(R.id.button);
+        b2 = (Button) findViewById(R.id.button2);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentoa);
             }
         });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentob = new Intent(MainActivity.this,MapsActivity.class);
+                startActivity(intentob);
+            }
+        });
+        b2.setEnabled(false);
         b.setEnabled(false);
         if(verificarPermisos())
         {
@@ -89,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
     private void cargarApp() {
         Toast.makeText(getApplicationContext(),"Cargar Por completo la aplicacion",Toast.LENGTH_LONG).show();
         b.setEnabled(true);
+        b2.setEnabled(true);
     }
 
     private boolean verificarPermisos() {
